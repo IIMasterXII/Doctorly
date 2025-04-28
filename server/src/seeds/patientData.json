@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Clive Rosfield",
+    "specialty": "Cardiologist"
+    
+  },
+  {
+    "name": "Max Kanat-Alexander",
+    "specialty": "Neurologist"
+    
+  },
+  {
+    "name": "Amiko Smith",
+    "specialty": "Dermatologist"
+    
+  },
+  {
+    "name": "Kent Beck",
+    "specialty": "Oncologist"
+   
+  },
+  {
+    "name": "Edward V. Berard",
+    "specialty": "Psychiatrist"
+    
+  },
+  {
+    "name": "Alan Kay",
+    "specialty": "Pediatrics"
+    
+  },
+  {
+    "name": "Claudia Hoare",
+    "specialty": "Hematologist"
+    
+  },
+  {
+    "name": "David Thomas",
+    "specialty": "Rheumatologist"
+    
+  },
+  {
+    "name": "Donald Knuth",
+    "specialty": "Orthopaedist"
+   
+  },
+  {
+    "name": "Reina Kazama",
+    "specialty": "Gastroenterologist"
+    
+  }
+]

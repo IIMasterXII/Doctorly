@@ -1,3 +1,4 @@
-import Profile from './Profile.js';
+import Patient from './Patient.js';
+import Appointment from  './Appointment.js';
 
-export { Profile };
+export { Patient, Appointment };
