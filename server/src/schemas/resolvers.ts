@@ -46,7 +46,7 @@ const resolvers = {
   Mutation: {
     addPatient: async (_parent: any, { input }: AddPatientArgs): Promise<{ token: string; patient: Patient }> => {
       const patient = await Patient.create({ ...input });
-      const token = signToken(patient.name, patient.age, patient._id);
+      const token = signToken(patient.name, patient.password, patient._id);
       return { token, patient };
     },
     login: async (_parent: any, { name, password }: { name: string; password: string }): Promise<{ token: string; patient: Patient }> => {
@@ -58,7 +58,7 @@ const resolvers = {
       if (!correctPw) {
         throw AuthenticationError;
       }
-      const token = signToken(patient.name, patient.email, patient._id);
+      const token = signToken(patient.name, patient.password, patient._id);
       return { token, patient };
     },
     removePatient: async (_parent: any, _args: any, context: Context): Promise<Patient | null> => {

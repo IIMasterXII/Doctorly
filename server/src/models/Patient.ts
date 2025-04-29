@@ -17,7 +17,7 @@ interface IPatient extends Document {
 const patientSchema = new Schema<IPatient>(
   {
     _id: {
-      type: Number,
+      type: String,
       required: true,
     },
     name: {
