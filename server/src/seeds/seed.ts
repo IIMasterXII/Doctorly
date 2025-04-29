@@ -1,6 +1,6 @@
 import db from '../config/connection.js';
 import {Doctor} from '../models/index.js';
-import doctorSeeds from './doctorData.json' assert { type: "json" };
+import doctorSeeds from './doctorData.json' with { type: "json" };
 import cleanDB from './cleanDB.js';
 
 
