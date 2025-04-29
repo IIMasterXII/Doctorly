@@ -1,8 +1,8 @@
 import db from '../config/connection.js';
-import {Doctor,  } from '../models/index.js';
+import {Doctor} from '../models/index.js';
 import doctorSeeds from './doctorData.json' assert { type: "json" };
 import cleanDB from './cleanDB.js';
-import Doctor from '../models/Doctor.js';
+
 
 const seedDatabase = async (): Promise<void> => {
   try {

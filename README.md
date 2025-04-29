@@ -24,7 +24,7 @@ MIT License
 ## Technologies Used
 Integrates technologies such as Infermedica, MongoDB, Node.js, Typescript, JWT Encryption, React and more. 
 
-## Image of Site
+## Image of Sites
 
 
 
