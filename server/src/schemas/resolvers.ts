@@ -1,65 +1,69 @@
-import { Profile } from '../models/index.js';
+import { Patient } from '../models/index.js';
 import { signToken, AuthenticationError } from '../utils/auth.js';
 
-interface Profile {
-  _id: string;
-  name: string;
-  email: string;
-  password: string;
+interface Patient {
+    _id: string;
+    name: string;
+    age: number;
+    gender: string;
+    symptoms:string;
+    password: string;
+    isCorrectPassword(password: string): Promise<boolean>;
 }
 
-interface ProfileArgs {
-  profileId: string;
+interface PatientArgs {
+  patientId: string;
 }
 
-interface AddProfileArgs {
+interface AddPatientArgs {
   input:{
     name: string;
-    email: string;
-    password: string;
+    age: number;
+    gender: string;
+    symptoms:string;
   }
 }
 
 interface Context {
-  user?: Profile;
+  user?: Patient;
 }
 
 const resolvers = {
   Query: {
-    profiles: async (): Promise<Profile[]> => {
-      return await Profile.find();
+    patients: async (): Promise<Patient[]> => {
+      return await Patient.find();
     },
-    profile: async (_parent: any, { profileId }: ProfileArgs): Promise<Profile | null> => {
-      return await Profile.findOne({ _id: profileId });
+    patient: async (_parent: any, { patientId }: PatientArgs): Promise<Patient | null> => {
+      return await Patient.findOne({ _id: patientId });
     },
-    me: async (_parent: any, _args: any, context: Context): Promise<Profile | null> => {
+    me: async (_parent: any, _args: any, context: Context): Promise<Patient | null> => {
       if (context.user) {
-        return await Profile.findOne({ _id: context.user._id });
+        return await Patient.findOne({ _id: context.user._id });
       }
       throw AuthenticationError;
     },
   },
   Mutation: {
-    addProfile: async (_parent: any, { input }: AddProfileArgs): Promise<{ token: string; profile: Profile }> => {
-      const profile = await Profile.create({ ...input });
-      const token = signToken(profile.name, profile.email, profile._id);
-      return { token, profile };
+    addPatient: async (_parent: any, { input }: AddPatientArgs): Promise<{ token: string; patient: Patient }> => {
+      const patient = await Patient.create({ ...input });
+      const token = signToken(patient.name, patient.password, patient._id);
+      return { token, patient };
     },
-    login: async (_parent: any, { email, password }: { email: string; password: string }): Promise<{ token: string; profile: Profile }> => {
-      const profile = await Profile.findOne({ email });
-      if (!profile) {
+    login: async (_parent: any, { name, password }: { name: string; password: string }): Promise<{ token: string; patient: Patient }> => {
+      const patient = await Patient.findOne({ name });
+      if (!patient) {
         throw AuthenticationError;
       }
-      const correctPw = await profile.isCorrectPassword(password);
+      const correctPw = await patient.isCorrectPassword(password);
       if (!correctPw) {
         throw AuthenticationError;
       }
-      const token = signToken(profile.name, profile.email, profile._id);
-      return { token, profile };
+      const token = signToken(patient.name, patient.password, patient._id);
+      return { token, patient };
     },
-    removeProfile: async (_parent: any, _args: any, context: Context): Promise<Profile | null> => {
+    removePatient: async (_parent: any, _args: any, context: Context): Promise<Patient | null> => {
       if (context.user) {
-        return await Profile.findOneAndDelete({ _id: context.user._id });
+        return await Patient.findOneAndDelete({ _id: context.user._id });
       }
       throw AuthenticationError;
     },

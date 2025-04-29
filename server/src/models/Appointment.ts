@@ -1,17 +1,26 @@
 import { Schema, model, Document } from 'mongoose';
-import bcrypt from 'bcrypt';
 
-// Define an interface for the Profile document
+
 interface IAppointment extends Document {
+    patient_id: number;
+    appointment_id: number;
     patientname: string;
     doctorname: string;
     date: Date;
 
 }
 
-// Define the schema for the Profile document
+
 const appointmentSchema = new Schema<IAppointment>(
   {
+    patient_id: {
+      type: Number,
+      required: true,
+    },
+    appointment_id: {
+      type: Number,
+      required: true,
+    },
     patientname: {
       type: String,
       required: true,  
@@ -34,6 +43,6 @@ const appointmentSchema = new Schema<IAppointment>(
 );
 
 
-const Appointment = model<Appointment>('Appointment', appointmentSchema);
+const Appointment = model<IAppointment>('Appointment', appointmentSchema);
 
 export default Appointment;
