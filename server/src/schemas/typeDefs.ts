@@ -1,33 +1,37 @@
 const typeDefs = `
-  type Profile {
-    _id: ID
-    name: String
-    email: String
-    password: String
+  type Patient {
+   _id: string;
+    name: string;
+    age: number;
+    gender: string;
+    symptoms:string;
+    password: string;
+    isCorrectPassword(password: string): Promise<boolean>;
+}
   }
 
   type Auth {
     token: ID!
-    profile: Profile
+    patient: Patient
   }
   
-  input ProfileInput {
+  input PatientInput {
     name: String!
-    email: String!
+    age: Number!
     password: String!
   }
 
   type Query {
-    profiles: [Profile]!
-    profile(profileId: ID!): Profile
-    me: Profile
+    patients: [Patient]!
+    patient(patientId: ID!): Patient
+    me: Patient
   }
 
   type Mutation {
-    addProfile(input: ProfileInput!): Auth
-    login(email: String!, password: String!): Auth
+    addPatient(input: PatientInput!): Auth
+    login(name: String!, age: Number!, password: String!): Auth
 
-    removeProfile: Profile
+    removePatient: Patient
   }
 `;
 

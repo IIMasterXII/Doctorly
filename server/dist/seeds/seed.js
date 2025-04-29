@@ -1,12 +1,12 @@
 import db from '../config/connection.js';
-import { Profile } from '../models/index.js';
-import profileSeeds from './profileData.json' assert { type: "json" };
+import { Doctor, } from '../models/index.js';
+import doctorSeeds from './doctorData.json' assert { type: "json" };
 import cleanDB from './cleanDB.js';
 const seedDatabase = async () => {
     try {
         await db();
         await cleanDB();
-        await Profile.insertMany(profileSeeds);
+        await Doctor.insertMany(doctorSeeds);
         console.log('Seeding completed successfully!');
         process.exit(0);
     }

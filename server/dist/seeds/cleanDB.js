@@ -1,8 +1,8 @@
-import { Profile } from '../models/index.js';
+import { Doctor } from '../models/index.js';
 const cleanDB = async () => {
     try {
-        await Profile.deleteMany({});
-        console.log('Profile collection cleaned.');
+        Doctor.deleteMany({});
+        console.log('Doctor collection cleaned.');
     }
     catch (err) {
         console.error('Error cleaning collections:', err);

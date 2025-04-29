@@ -1,9 +1,9 @@
-import { Patient } from '../models/index.js';
+import { Doctor } from '../models/index.js';
 
 const cleanDB = async (): Promise<void> => {
   try {
-    await Patient.deleteMany({});
-    console.log('Patient collection cleaned.');
+    Doctor.deleteMany({});
+    console.log('Doctor collection cleaned.');
 
   } catch (err) {
     console.error('Error cleaning collections:', err);
