@@ -1,6 +1,4 @@
 import express from 'express';
-import path from 'node:path';
-import type { Request, Response } from 'express';
 import db from './config/connection.js'
 import { ApolloServer } from '@apollo/server';// Note: Import from @apollo/server-express
 import { expressMiddleware } from '@apollo/server/express4';
@@ -17,6 +15,7 @@ const server = new ApolloServer({
 // Note: The expressMiddleware function is used to create a middleware
 // function that can be used with an Express server. It takes the Apollo
 const startApolloServer = async () => {
+  console.log(server)
   await server.start();
   await db();
 
@@ -33,10 +32,10 @@ const startApolloServer = async () => {
   ));
 
   if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/dist')));
+    app.use(express.static('../client/dist'));
 
-    app.get('*', (_req: Request, res: Response) => {
-      res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+    app.get('*', (_req, res) => {
+      res.sendFile('../client/dist/index.html');
     });
   }
 

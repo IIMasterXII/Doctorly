@@ -1,12 +1,11 @@
 const typeDefs = `
   type Patient {
-    _id: ID!
-    name: String!
-    age: Int!
-    gender: String!
-    symptoms: String!
-    password: String!
-    isCorrectPassword(password: String!): Boolean!
+   _id: String
+    name: String
+    age: Int
+    gender: String
+    symptoms: String
+    password: String
   }
 
   type Auth {
@@ -29,6 +28,10 @@ const typeDefs = `
   type Mutation {
     addPatient(input: PatientInput!): Auth
     login(name: String!, age: Int!, password: String!): Auth
+<<<<<<< HEAD
+=======
+
+>>>>>>> d4ddfda579411186cf9864c520a960ef68fea98a
     removePatient: Patient
   }
 `;
