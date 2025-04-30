@@ -3,6 +3,8 @@ import { GraphQLError } from 'graphql';
 import dotenv from 'dotenv';
 dotenv.config();
 
+// Middleware to authenticate token
+// This function checks if the token is valid and if so, adds the user data to the request object
 export const authenticateToken = ({ req }: any) => {
   let token = req.body.token || req.query.token || req.headers.authorization;
 
@@ -24,6 +26,7 @@ export const authenticateToken = ({ req }: any) => {
   return req;
 };
 
+// Middleware to check if the user is authenticated
 export const signToken = (username: string, email: string, _id: unknown) => {
   const payload = { username, email, _id };
   const secretKey: any = process.env.JWT_SECRET_KEY;
@@ -31,6 +34,8 @@ export const signToken = (username: string, email: string, _id: unknown) => {
   return jwt.sign({ data: payload }, secretKey, { expiresIn: '2h' });
 };
 
+// Custom error class for authentication errors
+// This class extends the GraphQLError class and sets the error code to 'UNAUTHENTICATED'
 export class AuthenticationError extends GraphQLError {
   constructor(message: string) {
     super(message, undefined, undefined, undefined, ['UNAUTHENTICATED']);
