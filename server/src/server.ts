@@ -11,7 +11,7 @@ const server = new ApolloServer({
 });
 
 const startApolloServer = async () => {
-  console.log(server)
+  
   await server.start();
   await db();
 

@@ -1,21 +1,24 @@
-import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import App from './App.jsx';
+import App from './App';
 import Home from './pages/Home';
 import Error from './pages/Error';
+import PatientForm from './components/PatientForm';
+import Doctor from './components/Doctor';
+import Appointment from './components/Appointment';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     errorElement: <Error />,
     children: [
-      {
-        index: true,
-        element: <Home />
-      }
-    ]
+      { index: true, element: <Home /> },
+      { path: 'patients', element: <PatientForm /> },
+      { path: 'doctors', element: <Doctor /> },
+      { path: 'appointments', element: <Appointment /> },
+    ],
   },
 ]);
 
