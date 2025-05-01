@@ -3,7 +3,8 @@ import {Doctor} from '../models/index.js';
 import doctorSeeds from './doctorData.json' with { type: "json" };
 import cleanDB from './cleanDB.js';
 
-
+// This script seeds the database with initial data for testing purposes.
+// It connects to the database, clears existing data, and inserts new data from JSON files.
 const seedDatabase = async (): Promise<void> => {
   try {
     await db();
