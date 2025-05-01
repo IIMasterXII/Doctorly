@@ -28,10 +28,6 @@ const typeDefs = `
   type Mutation {
     addPatient(input: PatientInput!): Auth
     login(name: String!, age: Int!, password: String!): Auth
-<<<<<<< HEAD
-=======
-
->>>>>>> d4ddfda579411186cf9864c520a960ef68fea98a
     removePatient: Patient
   }
 `;
