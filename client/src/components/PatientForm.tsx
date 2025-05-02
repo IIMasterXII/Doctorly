@@ -5,7 +5,6 @@ interface Patient {
   age: number;
   gender: string;
   symptoms: string;
-  condition: string;
 }
 
 const PatientForm: React.FC = () => {

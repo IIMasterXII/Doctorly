@@ -1,29 +1,25 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import PatientForm from './components/PatientForm';
-import Doctor from './components/Doctor'
+import Doctor from './components/Doctor';
 import Appointment from './components/Appointment';
 
+import Home from './pages/Home'; 
+import './App.css';
 
 const App: React.FC = () => {
   return (
-    <div className="app-container">
-      <h1><Doctorly</h1>
-
-      <section className="form-section">
-        <h2>Patient Form</h2>
-        <PatientForm />
-      </section>
-
-      <section className="form-section">
-        <h2>Doctor Profile</h2>
-        <DoctorForm />
-      </section>
-
-      <section className="form-section">
-        <h2>Book Appointment</h2>
-        <Appointment/>
-      </section>
-    </div>
+    
+      <div className="app-container">
+      
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/patient-form" element={<PatientForm />} />
+          <Route path="/doctor" element={<Doctor />} />
+          <Route path="/appointment" element={<Appointment />} />
+        </Routes>
+      </div>
+    
   );
 };
 

@@ -1,13 +1,114 @@
-.app-container {
-  padding: 2rem;
-  font-family: Arial, sans-serif;
-  max-width: 800px;
-  margin: 0 auto;
+:root {
+  --burgundy: #001380;
+  --gold: #FFD700;
+  --charcoal: #2E2E2E;
+  --light-charcoal: #3a3a3a;
+  --white: #ffffff;
+  --gray: #e0e0e0;
 }
 
-.form-section {
-  margin-bottom: 3rem;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--charcoal);
+  color: var(--white);
 }
+
+header {
+  background-color: var(--burgundy);
+  color: var(--gold);
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+  background-color: var(--light-charcoal);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  font-weight: 600;
+  color: var(--gold);
+}
+
+input,
+select,
+textarea {
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--charcoal);
+  color: var(--white);
+  outline: none;
+  font-size: 1rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border: 2px solid var(--gold);
+}
+
+button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--gold);
+  color: var(--burgundy);
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e6c200;
+}
+
+.card {
+  background-color: var(--charcoal);
+  border: 1px solid var(--gray);
+  padding: 1rem;
+  border-radius: 10px;
+  color: var(--white);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.table th,
+.table td {
+  border: 1px solid var(--gray);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.table th {
+  background-color: var(--burgundy);
+  color: var(--gold);
+}
+
+.table tr:nth-child(even) {
+  background-color: #3a3a3a;
+}
+
+.table tr:hover {
+  background-color: #444;
+}
+
