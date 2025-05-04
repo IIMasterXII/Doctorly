@@ -1,6 +1,8 @@
 import { Patient } from '../models/index.js';
 import { signToken, AuthenticationError } from '../utils/auth.js';
 
+// This file contains the resolvers for the GraphQL schema.
+// The resolvers are functions that are responsible for returning the data for the fields in the schema.
 interface Patient {
     _id: string;
     name: string;
@@ -10,11 +12,14 @@ interface Patient {
     password: string;
     isCorrectPassword(password: string): Promise<boolean>;
 }
+// The Patient interface represents the structure of a patient object in the database.
 
 interface PatientArgs {
   patientId: string;
 }
-
+// The PatientArgs interface represents the arguments that are passed to the patient query.
+// It contains the patientId argument, which is used to identify the patient in the database.
+// The PatientArgs interface is used in the patient query resolver to get the patientId from the arguments.
 interface AddPatientArgs {
   input:{
     name: string;
@@ -27,7 +32,9 @@ interface AddPatientArgs {
 interface Context {
   user?: Patient;
 }
-
+// The Context interface represents the context object that is passed to the resolvers.
+// It contains the user object, which is used to identify the currently logged-in user.
+// The Context interface is used in the me and removePatient resolvers to get the user object from the context.
 const resolvers = {
   Query: {
     patients: async (): Promise<Patient[]> => {

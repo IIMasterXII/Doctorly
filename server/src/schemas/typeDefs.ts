@@ -12,7 +12,7 @@ const typeDefs = `
     token: ID!
     patient: Patient
   }
-  
+
   input PatientInput {
     name: String!
     age: Int!
@@ -28,7 +28,6 @@ const typeDefs = `
   type Mutation {
     addPatient(input: PatientInput!): Auth
     login(name: String!, age: Int!, password: String!): Auth
-
     removePatient: Patient
   }
 `;

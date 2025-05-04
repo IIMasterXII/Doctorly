@@ -5,11 +5,15 @@ import { expressMiddleware } from '@apollo/server/express4';
 import { typeDefs, resolvers } from './schemas/index.js';
 import { authenticateToken } from './utils/auth.js';
 
+// Note: Importing the express middleware from @apollo/server/express4
+// allows us to use the express middleware with Apollo Server.
 const server = new ApolloServer({
   typeDefs,
   resolvers
 });
 
+// Note: The expressMiddleware function is used to create a middleware
+// function that can be used with an Express server. It takes the Apollo
 const startApolloServer = async () => {
   
   await server.start();
