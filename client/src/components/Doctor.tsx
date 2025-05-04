@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 interface Doctor {
   name: string;
@@ -7,8 +7,8 @@ interface Doctor {
 
 const Doctor: React.FC = () => {
   const [doctor, setDoctor] = useState<Doctor>({
-    name: '',
-    specialty: '',
+    name: "",
+    specialty: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,32 +18,36 @@ const Doctor: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Submitted doctor:', doctor);
+    console.log("Submitted doctor:", doctor);
   };
 
   return (
-    <div className="doctor-form-container">
-      <h2>Doctor Profile</h2>
+    <div className="container my-5">
+      <h2 className="mb-4 text-center">Doctor Profile</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="mb-3">
           <input
             type="text"
             name="name"
+            className="form-control"
             placeholder="Name"
             value={doctor.name}
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="mb-3">
           <input
             type="text"
             name="specialty"
+            className="form-control"
             placeholder="Specialty"
             value={doctor.specialty}
             onChange={handleChange}
           />
         </div>
-        <button type="submit">Save</button>
+        <button type="submit" className="btn btn-success">
+          Save
+        </button>
       </form>
     </div>
   );

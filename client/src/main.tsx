@@ -7,7 +7,7 @@ import Error from './pages/Error';
 import PatientForm from './components/PatientForm';
 import Doctor from './components/Doctor';
 import Appointment from './components/Appointment';
-import './App.css'
+import"bootstrap/dist/css/bootstrap.min.css";
 
 const router = createBrowserRouter([
   {
@@ -15,11 +15,11 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <Error />,
     children: [
-      { index: true, element: <Home /> },
-      { path: 'patients', element: <PatientForm /> },
-      { path: 'doctors', element: <Doctor /> },
-      { path: 'appointments', element: <Appointment /> },
-      { path: 'appointments', element: <Appointment /> }
+      { index: true, path: '/home',element: <Home /> },
+      { path: '/patient', element: <PatientForm /> },
+      { path: '/doctor', element: <Doctor /> },
+      { path: '/appointment', element: <Appointment /> },
+      
     ],
   },
 ]);

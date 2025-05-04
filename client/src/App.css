@@ -1,20 +1,20 @@
 :root {
-  --burgundy: #001380;
-  --gold: #FFD700;
+  --burgundy: #8000119f;
+  --burgundy: rgb(255, 0, 43);
   --charcoal: #2E2E2E;
   --light-charcoal: #3a3a3a;
-  --white: #ffffff;
+  --burgundy: #df1e1e;
   --gray: #e0e0e0;
 }
 
-body {
+.body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: var(--charcoal);
+  background-color: var( --burgundy);
   color: var(--white);
 }
 
-header {
+.header {
   background-color: var(--burgundy);
   color: var(--gold);
   padding: 1rem 2rem;
@@ -28,7 +28,7 @@ header {
   max-width: 1200px;
   margin: auto;
   padding: 2rem;
-  background-color: var(--light-charcoal);
+  background-color: var(--gold);
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -50,7 +50,7 @@ textarea {
   padding: 0.8rem;
   border-radius: 8px;
   border: none;
-  background-color: var(--charcoal);
+  background-color: var(--gold);
   color: var(--white);
   outline: none;
   font-size: 1rem;
@@ -62,7 +62,7 @@ textarea:focus {
   border: 2px solid var(--gold);
 }
 
-button {
+.button {
   padding: 0.8rem 1.5rem;
   border: none;
   border-radius: 8px;
@@ -74,7 +74,7 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+.button:hover {
   background-color: #e6c200;
 }
 
@@ -112,3 +112,50 @@ button:hover {
   background-color: #444;
 }
 
+.home-background {
+  background-image: url('/images/doctorlypic4.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.appointment-background {
+  background-image: url('/images/doctorlypic4.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.patient-background {
+  background-image: url('/images/doctorlypic4.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.home-background {
+  background-image: url('/images/doctorlypic4.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
