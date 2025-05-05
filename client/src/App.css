@@ -291,6 +291,7 @@ textarea {
  * Remove the inner padding in Chrome and Safari on macOS.
  */
 [type='search']::-webkit-search-decoration {
+  appearance: none;
   -webkit-appearance: none;
 }
 
