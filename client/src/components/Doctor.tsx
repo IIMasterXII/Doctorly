@@ -46,7 +46,7 @@ const Doctor: React.FC = () => {
           />
         </div>
         <button type="submit" className="btn btn-success">
-          Save
+          Search
         </button>
       </form>
     </div>

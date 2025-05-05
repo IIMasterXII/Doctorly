@@ -8,10 +8,11 @@
 }
 
 .body {
+  background-image: url('/images/doctorlypic4.jpg');
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background-color: var( --burgundy);
-  color: var(--white);
+  color: var(--yellow);
 }
 
 .header {
@@ -28,7 +29,7 @@
   max-width: 1200px;
   margin: auto;
   padding: 2rem;
-  background-color: var(--gold);
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -159,3 +160,6 @@ textarea:focus {
   justify-content: center;
   padding: 2rem;
 }
+
+
+
