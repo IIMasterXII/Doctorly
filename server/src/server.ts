@@ -15,7 +15,7 @@ const server = new ApolloServer({
 // Note: The expressMiddleware function is used to create a middleware
 // function that can be used with an Express server. It takes the Apollo
 const startApolloServer = async () => {
-  console.log(server)
+  
   await server.start();
   await db();
 

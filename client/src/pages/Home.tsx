@@ -1,16 +1,20 @@
 import Login from './Login'; // Adjust the path based on the actual location of Login.tsx
+import { Link } from "react-routor-dom";
 
 const Home = () => {
 
+const Home = () => {
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h1 className="card-header bg-dark text-light p-2 text-center">Doctorly</h1>
-          <div className="card-body">
-            <Login />
-          </div>
-        </div>
+    <main className="home-background text-center text-white">
+      <div className="bg-dark bg-opacity-50 p-5 rounded">
+        <h1 className="display-4 fw-bold mb-4">Welcome to Doctorly</h1>
+        <p className="lead mb-4">
+          Your trusted platform for connecting with top-rated healthcare professionals.
+        </p>
+      <Link to="/appointment" className="btn btn-warning">
+        Book An Appointment &rarr;
+      </Link>
+        <Login />
       </div>
     </main>
   );
