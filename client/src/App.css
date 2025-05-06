@@ -135,27 +135,6 @@ img {
   border-style: none;
 }
 
-/* Forms
-   ========================================================================== */
-/**
- * 1. Change the font styles in all browsers.
- * 2. Remove the margin in Firefox and Safari.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: inherit;
-  /* 1 */
-  font-size: 100%;
-  /* 1 */
-  line-height: 1.15;
-  /* 1 */
-  margin: 0;
-  /* 2 */
-}
-
 /**
  * Show the overflow in IE.
  * 1. Show the overflow in Edge.
@@ -363,7 +342,6 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'JetBrains Mono', monospace;
   margin: 0 0 0.5rem;
   line-height: 1.25;
 }
@@ -378,79 +356,6 @@ h2 {
 
 h3 {
   font-size: 1.75rem;
-}
-
-h4 {
-.header {
-  background-color: var(--burgundy);
-  color: var(--gold);
-  padding: 1rem 2rem;
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 2rem;
-  background-color: var(--gold);
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-label {
-  font-weight: 600;
-  color: var(--gold);
-}
-
-input,
-select,
-textarea {
-  padding: 0.8rem;
-  border-radius: 8px;
-  border: none;
-  background-color: var(--gold);
-  color: var(--white);
-  outline: none;
-  font-size: 1rem;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  border: 2px solid var(--gold);
-}
-
-.button {
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  background-color: var(--gold);
-  color: var(--burgundy);
-  font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.button:hover {
-  background-color: #e6c200;
-}
-
-.card {
-  background-color: var(--charcoal);
-  border: 1px solid var(--gray);
-  padding: 1rem;
-  border-radius: 10px;
-  color: var(--white);
 }
 
 .table {
@@ -480,15 +385,25 @@ textarea:focus {
 }
 
 .home-background {
-  background-image: url('/images/doctorlypic4.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
+}
+
+.background-absolute {
+  background-image: url(/images/doctorlypic4.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110vw;
+  height: 110vh;
+  z-index: -3;
+  filter: blur(4px);
 }
 
 .appointment-background {
@@ -504,18 +419,6 @@ textarea:focus {
 }
 
 .patient-background {
-  background-image: url('/images/doctorlypic4.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-.home-background {
   background-image: url('/images/doctorlypic4.jpg');
   background-size: cover;
   background-position: center;

@@ -3,7 +3,9 @@ import { Schema, model, Document } from 'mongoose';
 // Define the interface for the Doctor model
 // This interface extends the Document interface from mongoose
 interface IDoctor extends Document {
-    name: string;
+    _id: string;
+    firstName: string;
+    lastName: string;
     specialty: string;
 }
 
@@ -13,7 +15,11 @@ interface IDoctor extends Document {
 // for each field
 const doctorSchema = new Schema<IDoctor>(
   {
-    name: {
+    firstName: {
+      type: String,
+      required: true,  
+    },
+    lastName: {
       type: String,
       required: true,  
     },
@@ -22,11 +28,6 @@ const doctorSchema = new Schema<IDoctor>(
       required: true, 
     },
    
-  },
-  {
-    timestamps: true,
-    toJSON: { getters: true },
-    toObject: { getters: true },
   }
 );
 

@@ -1,20 +1,24 @@
-import Login from './Login'; // Adjust the path based on the actual location of Login.tsx
-import { Link } from "react-routor-dom";
-
-const Home = () => {
+import { Link } from "react-router-dom";
+import auth from "../utils/auth";
 
 const Home = () => {
   return (
     <main className="home-background text-center text-white">
+      <div className="background-absolute"></div>
       <div className="bg-dark bg-opacity-50 p-5 rounded">
         <h1 className="display-4 fw-bold mb-4">Welcome to Doctorly</h1>
         <p className="lead mb-4">
           Your trusted platform for connecting with top-rated healthcare professionals.
         </p>
-      <Link to="/appointment" className="btn btn-warning">
-        Book An Appointment &rarr;
+      {auth.loggedIn() ? (
+      <Link to="/analysis" className="btn btn-warning">
+        Take an Analysis &rarr;
       </Link>
-        <Login />
+      ) : (
+      <Link to="/login" className="btn btn-warning">
+        Login for your Analysis &rarr;
+      </Link>
+      )}
       </div>
     </main>
   );

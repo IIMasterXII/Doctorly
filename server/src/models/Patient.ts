@@ -5,12 +5,13 @@ import bcrypt from 'bcrypt';
 // It defines the structure of the data that will be stored in the database
 interface IPatient extends Document {
     _id: string;
-    name: string;
-    age: number;
-    gender: string;
-    symptoms:string;
+    username: string;
     password: string;
     isCorrectPassword(password: string): Promise<boolean>;
+    firstName: string;
+    lastName: string;
+    age: number;
+    gender: string;
  
 }
 
@@ -18,40 +19,33 @@ interface IPatient extends Document {
 // It defines the structure of the data that will be stored in the database
 const patientSchema = new Schema<IPatient>(
   {
-    _id: {
+    username: {
       type: String,
       required: true,
-    },
-    name: {
-      type: String,
-      required: true,      
-    },
-    age: {
-      type: Number,
-      required: true,
-
-    },
-    gender: {
-      type: String,
-      required: true,
-
-    },
-    symptoms: {
-      type: String,
-      required: true
-
     },
     password: {
       type: String,
       required: true,
-      minlength: 20,
+      minlength: 10,
+    },
+    firstName: { 
+      type: String, 
+      required: true 
+    },
+    lastName: { 
+      type: String, 
+      required: true 
+    },
+    age: {
+      type: Number,
+      required: true,
+    },
+    gender: { 
+      type: String, 
+      enum: ["Male", "Female", "Other"],
+      required: true,
     }
   },
-  {
-    timestamps: true,
-    toJSON: { getters: true },
-    toObject: { getters: true },
-  }
 );
 // This pre-save hook is used to hash the password before saving it to the database
 // It uses bcrypt to hash the password with a salt
