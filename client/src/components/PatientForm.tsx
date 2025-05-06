@@ -7,7 +7,23 @@ interface Patient {
   symptoms: string;
 }
 
-const Patient = () => {
+interface Doctor {
+  name: string;
+  specialty: string;
+}
+
+const symptomToSpecialty: Record<string, string> = {
+  depression: "Psychiatrist",
+  bloodclots: "Hematologist",
+  headache: "Neurologist",
+  arthritis: "Rheumatologist",
+  heart: "Cardiologist",
+  joint: "Orthopaedist",
+  rash: "Dermatologist",
+  stomach: "Gastroenterologist",
+};
+
+const PatientForm = () => {
   const [patient, setPatient] = useState<Patient>({
     name: "",
     age: "",
@@ -16,22 +32,48 @@ const Patient = () => {
   });
 
   const [patients, setPatients] = useState<Patient[]>([]);
+  const [suggestedDoctor, setSuggestedDoctor] = useState<string>("");
+  const [doctorData, setDoctorData] = useState<Doctor[]>([]);
   const [submitted, setSubmitted] = useState(false);
 
+  // Fetch doctor data from server API
   useEffect(() => {
-    const stored = localStorage.getItem("patients");
+    fetch("/api/doctors") // Make sure this route exists on your backend
+      .then((res) => res.json())
+      .then((data) => setDoctorData(data))
+      .catch((err) => console.error("Failed to fetch doctor data:", err));
+  }, []);
+
+  useEffect(() => {
+    const stored = sessionStorage.getItem("patients");
     if (stored) setPatients(JSON.parse(stored));
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setPatient((prev) => ({ ...prev, [name]: value }));
+    const updatedPatient = { ...patient, [name]: value };
+    setPatient(updatedPatient);
+
+    if (name === "symptoms") {
+      const keyword = Object.keys(symptomToSpecialty).find((key) =>
+        value.toLowerCase().includes(key)
+      );
+      if (keyword) {
+        const specialty = symptomToSpecialty[keyword];
+        const matchedDoctor = doctorData.find((doc: Doctor) =>
+          doc.specialty.toLowerCase().includes(specialty.toLowerCase())
+        );
+        setSuggestedDoctor(
+          matchedDoctor ? `${matchedDoctor.name} (${matchedDoctor.specialty})` : "No doctor found"
+        );
+      } else {
+        setSuggestedDoctor("");
+      }
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Simple validation
     if (!patient.name || !patient.age || !patient.gender || !patient.symptoms) {
       alert("Please fill out all fields.");
       return;
@@ -39,10 +81,10 @@ const Patient = () => {
 
     const updatedPatients = [...patients, patient];
     setPatients(updatedPatients);
-    localStorage.setItem("patients", JSON.stringify(updatedPatients));
+    sessionStorage.setItem("patients", JSON.stringify(updatedPatients));
     setPatient({ name: "", age: "", gender: "", symptoms: "" });
+    setSuggestedDoctor("");
     setSubmitted(true);
-
     setTimeout(() => setSubmitted(false), 3000);
   };
 
@@ -97,9 +139,14 @@ const Patient = () => {
             onChange={handleChange}
           />
         </div>
-        <button type="submit" className="btn btn-info">
-          Save Patient
-        </button>
+
+        {suggestedDoctor && (
+          <div className="alert alert-info">
+            Suggested Doctor: <strong>{suggestedDoctor}</strong>
+          </div>
+        )}
+
+        <button type="submit" className="btn btn-info">Save Patient</button>
       </form>
 
       {patients.length > 0 && (
@@ -131,4 +178,4 @@ const Patient = () => {
   );
 };
 
-export default Patient;
+export default PatientForm;
