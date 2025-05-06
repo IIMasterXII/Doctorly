@@ -1,45 +1,61 @@
 import { gql } from '@apollo/client';
 
-export const ADD_PROFILE = gql`
-  mutation addProfile($input: ProfileInput!) {
-    addProfile(input: $input) {
+export const ADD_PATIENT = gql`
+  mutation addPatient($input: PatientInput!) {
+    addPatient(input: $input) {
       token
-      profile {
+      patient {
         _id
-        name
+        username
+        firstName
+        lastName
+        age
+        gender
       }
     }
   }
 `;
 
-export const ADD_SKILL = gql`
-  mutation addSkill($profileId: ID!, $skill: String!) {
-    addSkill(profileId: $profileId, skill: $skill) {
-      _id
-      name
-      skills
+export const CREATE_APPOINTMENT = gql`
+  mutation CreateAppointment($input: AppointmentInput!) {
+    createAppointment(input: $input) {
+      id
+      createdAt
+      diagnosis
+      doctor {
+        firstName
+        lastName
+        specialty
+      }
+      patient {
+        firstName
+        lastName
+      }
     }
   }
 `;
 
 export const LOGIN_USER = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+  mutation login($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
       token
-      profile {
+      patient {
         _id
-        name
+        username
+        firstName
+        lastName
+        age
+        gender
       }
     }
   }
 `;
 
-export const REMOVE_SKILL = gql`
-  mutation removeSkill($skill: String!) {
-    removeSkill(skill: $skill) {
-      _id
-      name
-      skills
+export const GET_DIAGNOSIS = gql`
+  mutation GetDiagnosis($symptoms: String!) {
+    getDiagnosis(symptoms: $symptoms) {
+      diagnosis
+      specialist
     }
-  }
-`;
+}
+`

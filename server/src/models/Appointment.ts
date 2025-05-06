@@ -2,12 +2,11 @@ import { Schema, model, Document } from 'mongoose';
 
 // This is the interface for the Appointment model
 interface IAppointment extends Document {
-    patient_id: number;
-    appointment_id: number;
-    patientname: string;
-    doctorname: string;
-    date: Date;
-
+    _id: string;
+    patient: Schema.Types.ObjectId;
+    doctor: Schema.Types.ObjectId;
+    diagnosis: string;
+    createdAt: Date;
 }
 
 // This is the schema for the Appointment model
@@ -21,26 +20,10 @@ interface IAppointment extends Document {
 // It also defines the methods for each field
 const appointmentSchema = new Schema<IAppointment>(
   {
-    patient_id: {
-      type: Number,
-      required: true,
-    },
-    appointment_id: {
-      type: Number,
-      required: true,
-    },
-    patientname: {
-      type: String,
-      required: true,  
-    },
-    doctorname: {
-      type: String,
-      required: true, 
-    },
-    date: {
-        type: Date,
-        required: true
-    }
+    patient: { type: Schema.Types.ObjectId, ref: "Patient", required: true },
+    doctor: { type: Schema.Types.ObjectId, ref: "Doctor", required: true },
+    diagnosis: {type: String, required: true},
+    createdAt: { type: Date, default: Date.now }
    
   },
   {

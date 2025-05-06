@@ -1,11 +1,8 @@
 import { type JwtPayload, jwtDecode } from 'jwt-decode';
 
-// import jwtDecode from 'jwt-decode';
-// import { type JwtPayload } from 'jwt-decode';
 interface ExtendedJwt extends JwtPayload {
   data:{
     username:string,
-    email:string,
     _id:string
   }
 };

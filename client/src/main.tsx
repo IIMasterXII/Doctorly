@@ -4,10 +4,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import Home from './pages/Home';
 import Error from './pages/Error';
-import PatientForm from './components/PatientForm';
-import Doctor from './components/Doctor';
-import Appointment from './components/Appointment';
-import"bootstrap/dist/css/bootstrap.min.css";
+import Login from './pages/Login';
+import Analysis from './components/Analysis';
+import Appointments from './pages/Appointments';
+import { ProtectedRoute } from './components/ProtectedRoute';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const router = createBrowserRouter([
   {
@@ -15,11 +17,10 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <Error />,
     children: [
-      { index: true, path: '/home',element: <Home /> },
-      { path: '/patient', element: <PatientForm /> },
-      { path: '/doctor', element: <Doctor /> },
-      { path: '/appointment', element: <Appointment /> },
-      
+      { index: true, path: '/',element: <Home /> },
+      { path: '/login', element: <Login /> },
+      { path: '/analysis', element: <ProtectedRoute><Analysis /></ProtectedRoute> },
+      { path: '/appointments', element: <ProtectedRoute><Appointments /></ProtectedRoute> },
     ],
   },
 ]);

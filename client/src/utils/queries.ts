@@ -1,31 +1,53 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_PROFILES = gql`
-  query allProfiles {
-    profiles {
+export const QUERY_PATIENTS = gql`
+  query allPatients {
+    getPatients {
       _id
-      name
-      skills
+      username
+      firstName
+      lastName
+      age
+      gender
     }
   }
 `;
 
-export const QUERY_SINGLE_PROFILE = gql`
-  query singleProfile($profileId: ID!) {
-    profile(profileId: $profileId) {
-      _id
-      name
-      skills
+export const GET_APPOINTMENTS_BY_PATIENT = gql`
+  query GetAppointmentsByPatient($patientId: ID!) {
+    getAppointmentsByPatient(patientId: $patientId) {
+      id
+      createdAt
+      diagnosis
+      doctor {
+        firstName
+        lastName
+        specialty
+      }
     }
   }
 `;
 
-export const QUERY_ME = gql`
-  query me {
-    me {
+export const QUERY_SINGLE_PATIENT = gql`
+  query singlePatient($patientId: ID!) {
+    getPatient(patientId: $patientId) {
       _id
-      name
-      skills
+      username
+      firstName
+      lastName
+      age
+      gender
+    }
+  }
+`;
+
+export const QUERY_SPECIALIZED_DOCTOR = gql`
+  query DoctorsBySpecialty($specialty: String!) {
+    doctorsBySpecialty(specialty: $specialty) {
+      _id
+      firstName
+      lastName
+      specialty
     }
   }
 `;

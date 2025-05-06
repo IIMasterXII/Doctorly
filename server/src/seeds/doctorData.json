@@ -1,51 +1,61 @@
 [
   {
-    "name": "Clive Rosfield",
+    "firstName": "Clive",
+    "lastName": "Rosfield",
     "specialty": "Cardiologist"
     
   },
   {
-    "name": "Max Kanat-Alexander",
+    "firstName": "Max",
+    "lastName": "Kanat-Alexander",
     "specialty": "Neurologist"
     
   },
   {
-    "name": "Amiko Smith",
+    "firstName": "Amiko",
+    "lastName": "Smith",
     "specialty": "Dermatologist"
     
   },
   {
-    "name": "Kent Beck",
+    "firstName": "Kent",
+    "lastName": "Beck",
     "specialty": "Oncologist"
    
   },
   {
-    "name": "Edward V. Berard",
+    "firstName": "Edward",
+    "lastName": "Berard",
     "specialty": "Psychiatrist"
     
   },
   {
-    "name": "Alan Kay",
+    "firstName": "Alan",
+    "lastName": "Kay",
     "specialty": "Pediatrics"
     
   },
   {
-    "name": "Claudia Hoare",
+    "firstName": "Claudia",
+    "lastName": "Hoare",
     "specialty": "Hematologist"
     
   },
   {
-    "name": "David Thomas",
+    "firstName": "David",
+    "lastName": "Thomas",
     "specialty": "Rheumatologist"
     
   },
   {
-    "name": "Donald Knuth",
+    "firstName": "Donald",
+    "lastName": "Knuth",
     "specialty": "Orthopaedist"
    
   },
   {
-    "name": "Reina Kazama",
+    "firstName": "Reina",
+    "lastName": "Kazama",
     "specialty": "Gastroenterologist"
     
   }
