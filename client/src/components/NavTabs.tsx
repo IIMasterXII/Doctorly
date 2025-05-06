@@ -1,4 +1,5 @@
 import auth from "../utils/auth";
+import { Link } from "react-router-dom";
 import { MouseEvent } from "react";
 
 const NavTabs = () => {
@@ -8,15 +9,15 @@ const NavTabs = () => {
   };
     return (
       <nav className="nav bg-primary nav-pills justify-content-end p-3">
-        <a className="nav-link text-light" href="/">
+        <Link to="/" className="btn text-light">
           Home
-        </a>
-        <a className="nav-link text-light" href="/analysis">
+        </Link>
+        <Link to="/analysis" className="btn text-light">
           Analysis
-        </a>
-        <a className="nav-link text-light" href="/appointments">
+        </Link>
+        <Link to="/appointments" className="btn text-light">
           Appointments
-        </a>
+        </Link>
         <button className="nav-link text-light" onClick={logout}>
           Logout
         </button>
